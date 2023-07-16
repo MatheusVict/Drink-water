@@ -10,5 +10,7 @@ import com.example.drinkwater.databinding.ActivityMainBinding
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        supportActionBar!!.hide()
     }
 }
