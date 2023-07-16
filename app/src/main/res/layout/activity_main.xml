@@ -6,13 +6,33 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+    <View
+        android:id="@+id/containerHeader"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/container_header"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:src="@drawable/drinkwater"
+        android:layout_margin="20dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintTop_toTopOf="@id/containerHeader"
+        app:layout_constraintStart_toStartOf="@id/containerHeader"
+        />
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_refresh"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintTop_toTopOf="@id/containerHeader"
+        app:layout_constraintEnd_toEndOf="@id/containerHeader"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
