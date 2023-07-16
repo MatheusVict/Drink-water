@@ -2,4 +2,5 @@
     <string name="app_name">Drink Water</string>
     <string name="hint_weight">Seu Peso (Kg)</string>
     <string name="hint_age">Sua Idade</string>
+    <string name="text_button_calculate">Calcular ingestão Diária</string>
 </resources>
