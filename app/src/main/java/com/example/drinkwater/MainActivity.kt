@@ -1,14 +1,19 @@
 package com.example.drinkwater
 
+import android.app.TimePickerDialog
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.AlarmClock
+import android.widget.TimePicker
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.example.drinkwater.databinding.ActivityMainBinding
 import com.example.drinkwater.model.DailyIntakeCalculator
 import com.example.drinkwater.model.interfacesDrink.CalculateDailyIntake
 import java.text.NumberFormat
+import java.util.Calendar
 import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
@@ -25,6 +30,14 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnCalculate.setOnClickListener {
             validInputs()
+        }
+
+        binding.addRemember.setOnClickListener {
+            chooseRemainderTime()
+        }
+
+        binding.alert.setOnClickListener {
+            setAlarm()
         }
 
         binding.refreshButton.setOnClickListener { showDialog() }
@@ -77,6 +90,42 @@ class MainActivity : AppCompatActivity() {
 
         val dialog = alertDialog.create()
         dialog.show()
+    }
+
+    private fun chooseRemainderTime() {
+        val calendar = Calendar.getInstance()
+        val currentHour = calendar.get(Calendar.HOUR_OF_DAY)
+        val currentMinute = calendar.get(Calendar.MINUTE)
+
+        val timePickerDialog = TimePickerDialog(
+            this,
+            { timePicker, hourOfDay, minute ->
+                binding.txtHour.text = String.format("%02d", hourOfDay)
+                binding.txtMinutes.text = String.format("%02d", minute)
+            },
+            currentHour,
+            currentMinute,
+            true
+        )
+
+        timePickerDialog.show()
+    }
+
+    private fun setAlarm() {
+        val inputHourText = binding.txtHour.text.toString()
+        val inputMinuteText = binding.txtMinutes.text.toString()
+
+        if (inputHourText.isNotEmpty() && inputMinuteText.isNotEmpty()) {
+            val intent = Intent(AlarmClock.ACTION_SET_ALARM).apply {
+                putExtra(AlarmClock.EXTRA_HOUR, inputHourText.toInt())
+                putExtra(AlarmClock.EXTRA_MINUTES, inputMinuteText.toInt())
+                putExtra(AlarmClock.EXTRA_MESSAGE, getString(R.string.alarm_message))
+            }
+
+            if (intent.resolveActivity(packageManager) != null) {
+                startActivity(intent)
+            }
+        }
     }
 
 }

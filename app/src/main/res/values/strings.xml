@@ -15,5 +15,7 @@
     <string name="dialog_title">Redefinir dados</string>
     <string name="dialog_message">Deseja excluir todos os dados existentes?</string>
 
+    <string name="alarm_message">Hora de beber água!</string>
+
 
 </resources>
