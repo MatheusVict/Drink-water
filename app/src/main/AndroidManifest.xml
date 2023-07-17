@@ -8,9 +8,9 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@drawable/drinkwater"
+        android:icon="@drawable/drinkwatericon"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/drinkwater"
+        android:roundIcon="@drawable/drinkwatericon"
         android:supportsRtl="true"
         android:theme="@style/Theme.DrinkWater"
         tools:targetApi="31">
