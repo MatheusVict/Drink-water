@@ -61,14 +61,24 @@ class MainActivity : AppCompatActivity() {
             showToast(toastAgeEmptyInput)
             return
         }
+        getAmountWaterML()
+    }
+
+    private fun getAmountWaterML() {
+        val weightInputText = binding.weightInput.text.toString()
+        val ageInputText = binding.ageInput.text.toString()
         val age = ageInputText.toInt()
         val weight = weightInputText.toDouble()
+
         val resultML = dailyIntakeCalculator.calculateTotalMl(weight, age)
 
+        formatterToBrazilMetric(resultML)
+    }
+
+    private fun formatterToBrazilMetric(resultML: Double) {
         val formatter = NumberFormat.getNumberInstance(Locale("pt", "BR"))
         formatter.isGroupingUsed = false
         binding.txtResultMl.text = "${formatter.format(resultML)} ml"
-
     }
 
     private fun showToast(messageResId: Int) {
