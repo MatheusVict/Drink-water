@@ -4,6 +4,7 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.example.drinkwater.databinding.ActivityMainBinding
 import com.example.drinkwater.model.DailyIntakeCalculator
 import com.example.drinkwater.model.interfacesDrink.CalculateDailyIntake
@@ -25,6 +26,8 @@ class MainActivity : AppCompatActivity() {
         binding.btnCalculate.setOnClickListener {
             validInputs()
         }
+
+        binding.refreshButton.setOnClickListener { showDialog() }
     }
 
     private fun setupView() {
@@ -58,4 +61,22 @@ class MainActivity : AppCompatActivity() {
     private fun showToast(messageResId: Int) {
         Toast.makeText(this, messageResId, Toast.LENGTH_SHORT).show()
     }
+
+    private fun showDialog() {
+        val alertDialog = AlertDialog.Builder(this)
+        alertDialog.setTitle(R.string.dialog_title)
+            .setMessage(R.string.dialog_message)
+            .setPositiveButton("OK") { _, _ ->
+                binding.weightInput.setText("")
+                binding.ageInput.setText("")
+                binding.txtResultMl.text = ""
+            }
+            .setNegativeButton("Cancelar") { dialogInterface, _ ->
+                dialogInterface.dismiss()
+            }
+
+        val dialog = alertDialog.create()
+        dialog.show()
+    }
+
 }

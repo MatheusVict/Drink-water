@@ -12,5 +12,8 @@
     <string name="toast_empty_weight">Informe seu peso!</string>
     <string name="toast_empty_age">Informe sua idade!</string>
 
+    <string name="dialog_title">Redefinir dados</string>
+    <string name="dialog_message">Deseja excluir todos os dados existentes?</string>
+
 
 </resources>
