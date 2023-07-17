@@ -8,4 +8,9 @@
     <string name="text_hour">00</string>
     <string name="text_two_dots">:</string>
     <string name="text_minutes">00</string>
+
+    <string name="toast_empty_weight">Informe seu peso!</string>
+    <string name="toast_empty_age">Informe sua idade!</string>
+
+
 </resources>
